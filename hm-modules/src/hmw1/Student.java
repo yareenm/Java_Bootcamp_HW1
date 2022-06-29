@@ -52,6 +52,14 @@ public class Student {
         this.gender = gender;
     }
 
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

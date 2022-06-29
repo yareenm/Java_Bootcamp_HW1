@@ -45,6 +45,12 @@ public class Instructor {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(name, address, phoneNumber);

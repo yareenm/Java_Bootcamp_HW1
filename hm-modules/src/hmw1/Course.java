@@ -39,6 +39,14 @@ public class Course {
         this.creditScore = creditScore;
     }
 
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,4 +68,5 @@ public class Course {
                 ", creditScore=" + creditScore +
                 '}';
     }
+
 }

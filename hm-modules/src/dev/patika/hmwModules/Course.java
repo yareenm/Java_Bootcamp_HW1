@@ -1,19 +1,42 @@
-package hmw1;
+package dev.patika.hmwModules;
+import org.hibernate.annotations.ManyToAny;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 // Class name is Course. It has 3 attributes; related course name, course code and credit score.
 // e-mail: yareenm@outlook.com
+@Entity
 public class Course {
-    private String courseName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String courseCode;
+    private String courseName;
     private int creditScore;
 
+    @ManyToOne
     private Instructor instructor = new Instructor();
+
+    @ManyToOne
+    private Student student = new Student();
+
     public Course(String courseName, String courseCode, int creditScore){
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.creditScore = creditScore;
     }//constructor
+
+    public Course(){
+
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
+    }
 
     public String getCourseName() {
         return courseName;
@@ -45,6 +68,14 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override

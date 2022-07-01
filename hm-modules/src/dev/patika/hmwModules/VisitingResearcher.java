@@ -1,8 +1,11 @@
-package hmw1;
+package dev.patika.hmwModules;
+
+import javax.persistence.Entity;
 
 // This class name is Visiting Researcher. It inherits from Instructor class.
 // It is a sub class.
 // e-mail: yareenm@outlook.com
+@Entity
 public class VisitingResearcher extends Instructor{
     private double hourlySalary;
 
@@ -13,6 +16,10 @@ public class VisitingResearcher extends Instructor{
 
     public VisitingResearcher(double hourlySalary){
         this.hourlySalary = hourlySalary;
+    }
+
+    public VisitingResearcher() {
+
     }
 
     public double getHourlySalary() {

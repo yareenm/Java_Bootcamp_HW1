@@ -1,16 +1,22 @@
-package hmw1;
+package dev.patika.hmwModules;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 // Class name is Student. It has 4 attributes; related person's name, birth date, address, and gender.
 // e-mail: yareenm@outlook.com
+@Entity
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String birthDate;
     private String address;
     private String gender;
 
+    @OneToMany(mappedBy = "student")
     private List<Course> courseList = new ArrayList<>();
 
     public Student(String name, String birthDate, String address, String gender){
@@ -18,6 +24,16 @@ public class Student {
         this. birthDate = birthDate;
         this.address = address;
         this.gender = gender;
+    }
+
+    public Student() {
+
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return id;
     }
 
     public String getName() {

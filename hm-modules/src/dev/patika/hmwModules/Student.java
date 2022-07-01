@@ -16,7 +16,7 @@ public class Student {
     private String address;
     private String gender;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     private List<Course> courseList = new ArrayList<>();
 
     public Student(String name, String birthDate, String address, String gender){

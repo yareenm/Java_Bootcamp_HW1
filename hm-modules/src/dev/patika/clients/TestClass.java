@@ -82,7 +82,6 @@ public class TestClass {
             System.out.println("All data persisted...");
 
         } catch (Exception e) {
-            e.getStackTrace();
             em.getTransaction().rollback();//Undoes what it has done so far
         }finally {
             EntityManagerUtils.closeEntityManager(em);

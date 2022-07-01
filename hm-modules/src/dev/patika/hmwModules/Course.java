@@ -1,5 +1,4 @@
 package dev.patika.hmwModules;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -16,11 +15,11 @@ public class Course {
     private String courseName;
     private int creditScore;
 
-    @ManyToOne
-    private Instructor instructor = new Instructor();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Instructor instructor;// = new Instructor();
 
-    @ManyToOne
-    private Student student = new Student();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Student student;// = new Student();
 
     public Course(String courseName, String courseCode, int creditScore){
         this.courseName = courseName;

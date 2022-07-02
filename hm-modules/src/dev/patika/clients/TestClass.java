@@ -1,12 +1,60 @@
 package dev.patika.clients;
 
+import dev.patika.controller.CourseController;
+import dev.patika.controller.InstructorController;
+import dev.patika.controller.StudentController;
 import dev.patika.hmwModules.*;
 import dev.patika.utils.EntityManagerUtils;
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class TestClass {
     public static void main(String[] args) {
-        saveTestData();
+        
+        if (checkTestData() == 0){
+            saveTestData();
+        }
+        InstructorController instructorController = new InstructorController();
+        StudentController studentController = new StudentController();
+        CourseController courseController = new CourseController();
+
+        Student newStudent = new Student("Ceren","June","Mersin","Female");
+        Instructor newInstructor = new PermanentInstructor("Nizami","Adana","863",9000);
+        Course newCourse = new Course("FinalProject","BIL545",10);
+
+        List<Student> studentList = studentController.findAllStudent();
+        List<Instructor> instructorList =instructorController.findAllInstructors();
+        List<Course> courseList =courseController.findAllCourses();
+
+        //save to Db function's test
+        studentController.saveStudent(newStudent);
+        instructorController.saveInstructor(newInstructor);
+        courseController.saveCourse(newCourse);
+
+        //find all function's test
+         for (Student student : studentList) {
+             System.out.println(student);
+         }
+
+      //for (Instructor instructor : instructorList) {
+      //    System.out.println(instructor);
+      //}
+
+      //for (Course course : courseList) {
+      //    System.out.println(course);
+      //}
+
+        //find by Id function's test
+      //System.out.println(instructorController.findInstructorById(1));
+      //System.out.println(studentController.findStudentById(1));
+
+
+
+    }
+
+    private static int checkTestData() {
+        EntityManager em = EntityManagerUtils.getEntityManager("mysqlPU");
+        return em.createQuery("FROM Student",Student.class).getResultList().size();
     }
 
     private static void saveTestData() {
